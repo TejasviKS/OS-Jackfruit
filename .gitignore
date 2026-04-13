@@ -1,0 +1,33 @@
+# Build outputs
+*.o
+*.ko
+*.mod
+*.mod.c
+*.symvers
+*.order
+.tmp_versions/
+modules.order
+Module.symvers
+
+# Compiled binaries
+engine
+memory_hog
+cpu_hog
+io_pulse
+
+# Root filesystems (large, not needed in repo)
+rootfs-base/
+rootfs-alpha/
+rootfs-beta/
+rootfs-*/
+
+# Alpine tarball
+*.tar.gz
+
+# Runtime files
+logs/
+/tmp/mini_runtime.sock
+
+# Editor/OS junk
+.DS_Store
+*.swp
