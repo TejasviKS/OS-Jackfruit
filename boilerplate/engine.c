@@ -233,17 +233,6 @@ static const char *state_to_string(container_state_t s)
 
 /* ═══════════════════════════════════════════════════════════════
  *  BOUNDED BUFFER  (Task 3)
- *
- *  Why mutex + condition variables?
- *  - Producers block (not spin) when the buffer is full → no wasted CPU
- *  - Consumers block when empty → no busy-wait
- *  - pthread_cond_broadcast on shutdown wakes all waiters so threads
- *    can exit promptly without deadlocking
- *
- *  Race conditions without synchronisation:
- *  - head/tail/count are read-modify-write; concurrent updates corrupt them
- *  - a producer could overwrite a slot the consumer hasn't read yet
- *  - shutdown flag set without broadcast could leave threads sleeping forever
  * ═══════════════════════════════════════════════════════════════ */
 static int bounded_buffer_init(bounded_buffer_t *b)
 {

@@ -41,9 +41,8 @@ struct monitored_entry {
 
 /*
  * Global list + mutex.
- * Mutex chosen over spinlock because kmalloc(GFP_KERNEL) in the ioctl
- * path may sleep.  Timer callback uses mutex_trylock so it never blocks
- * in softirq context.
+ * Mutex chosen over spinlock because kmalloc(GFP_KERNEL) in the ioctl path may sleep.
+ * Timer callback uses mutex_trylock so it never blocks in softirq context.
  */
 static LIST_HEAD(monitored_list);
 static DEFINE_MUTEX(monitored_lock);
